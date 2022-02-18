@@ -7,6 +7,13 @@ It is important to note that this APEX code cannot work by itself. It requires a
 
 Once the Named credential is good to go, it is time to tweak the APEX code in this project, deploy, and then you are good to go.
 
+### Flow
+A simple example flow which sends every record to Pardot 
+![image](https://user-images.githubusercontent.com/779440/154770572-b0a04691-d932-4875-a02e-a884f43dc6c4.png)
+![image](https://user-images.githubusercontent.com/779440/154770612-3c1bf47a-110c-4b1d-af26-d5009bce582a.png)
+Note this is not actually recomended. We can check if the record is already in Pardot by seeing if the Pardot_URL field is populated first. If empty, proceed with something like the above.
+
+
 ## APEX Tweaks Required
 
 **Recommended** - you should take a look at the try/catch block to see how you will want to handle any potential API errors.
