@@ -1,4 +1,4 @@
-public with sharing class PardotAPIProspectPublisher {
+public with sharing class PardotProspectPublisher {
     public static final Integer HTTP_REQUESTS_PER_BATCH = 50;
     public static final String NAMED_CREDENTIAL = 'APEX_Pardot_Credential';
 
@@ -42,11 +42,10 @@ public with sharing class PardotAPIProspectPublisher {
                     req.setMethod('POST');
                     // Pardot will default the the oldest Pardot Campaign if we do not provide a Pardot Campaign ID which is all numeric and different than the CRM campaign ID
                     String body = '';
-                    if (String.isNotBlank(prospect.campaignId))
-                    {
+                    if (String.isNotBlank(prospect.campaignId)) {
                         body = '{"matchEmail":"' + prospect.email + '","prospect":{"email": "' + prospect.email + '", "campaignId": ' + prospect.campaignId + '},"fields": ["id", "email"], "secondaryDeletedSearch": true}';
-                    }else
-                    {
+                    }
+		    else {
                         body = '{"matchEmail":"' + prospect.email + '","prospect":{"email": "' + prospect.email + '"},"fields": ["id", "email"], "secondaryDeletedSearch": true}';
                     }
                     System.debug('Submitting: ' + body);
