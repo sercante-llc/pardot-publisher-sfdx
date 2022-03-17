@@ -45,7 +45,7 @@ public with sharing class PardotProspectPublisher {
                     if (String.isNotBlank(prospect.campaignId)) {
                         body = '{"matchEmail":"' + prospect.email + '","prospect":{"email": "' + prospect.email + '", "campaignId": ' + prospect.campaignId + '},"fields": ["id", "email"], "secondaryDeletedSearch": true}';
                     }
-		    else {
+		    else {
                         body = '{"matchEmail":"' + prospect.email + '","prospect":{"email": "' + prospect.email + '"},"fields": ["id", "email"], "secondaryDeletedSearch": true}';
                     }
                     System.debug('Submitting: ' + body);
