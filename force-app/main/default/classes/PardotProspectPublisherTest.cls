@@ -32,6 +32,9 @@ private class PardotProspectPublisherTest {
         PardotProspectPublisher.NewProspect a = new PardotProspectPublisher.NewProspect();
         a.email = email;
         a.businessUnitId = '0UvB00000004CC7KAM';
+        if (email == 'bob1@email.com') { // Lets test adding a campaign id at least once
+            a.campaignId = '12345';
+        }
         return a;
     }
 }
