@@ -3,7 +3,7 @@
 This project enables an API created prospect from Salesforce. As such, we are only sending the email address into Pardot trusting the Pardot <-> CRM sync to follow normal processes and sync the rest of the fields in. This project doesn't do anything on it's own, needing a FLOW or other mechanism to call this APEX class.
 
 ## Installation & Usage
-It is important to note that this APEX code cannot work by itself. It requires a Named Credential properly configured to communicate with Pardot. If you aren't interested in reading the complete series of blog posts (recommended), then please at least follow the steps in our [Connecting to Pardot API from APEX](https://thespotforpardot.com/2021/02/02/pardot-api-and-getting-ready-with-salesforce-sso-users-part-3a-connecting-to-pardot-api-from-apex/) blog post which details those steps.
+It is important to note that this APEX code cannot work by itself. It requires a Named Credential properly configured to communicate with Pardot. If you aren't interested in reading the complete series of blog posts (recommended), then please at least follow the steps in our [Connecting to Pardot API from APEX](https://thespotforpardot.com/2021/02/02/pardot-api-and-getting-ready-with-salesforce-sso-users-part-3a-connecting-to-pardot-api-from-apex/) blog post which details those steps *[**Note** if using in a Sandbox, use the pi.demo.pardot.com and test.salesforce.com URLs as indicated in the blog post]*.
 
 Once the Named credential is set up, it is time to tweak the APEX code in this project, deploy, and test.
 
@@ -23,6 +23,9 @@ Note this is not actually recommended. We can check if the record is already in 
 This supports Multiple Business Units as we pass in the Business Unit ID, but assumes a single API user which is set up in all the MBUs. Adjustments would need to be made to support multiple logins. Likely having a named credential per business unit ID.
 
 ## Pardot Campaign IDs
-Pardot Campaign IDs are different from the CRM campaign IDs and are numeric. There isn't an easy way to find the Pardot Campaign IDs inside Lightning Experience. Maybe edit a prospect, inspect the Campaign Dropdown to get the Pardot ID. 
+
+Pardot Requires Campaigns for record creation (along with email address). If a campaign isn't provided, Pardot will default to the OLDEST active campaign in Pardot.
+
+Pardot Campaign IDs are different from the CRM campaign IDs and are numeric. There currently isn't an easy way to find the Pardot Campaign IDs inside Lightning Experience. Maybe edit a prospect, inspect the Campaign Dropdown to get the Pardot ID. 
 
 The https://pi.pardot.com campaign page is more convenient as we can see the Pardot Campaign ID in the URL for a given Pardot Campaign.
